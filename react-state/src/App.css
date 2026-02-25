@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-
 * {
     box-sizing: border-box;
 }
@@ -8,7 +5,9 @@
 body {
     margin: 0;
     font-family: Inter, sans-serif;
-    background-color: #FAFAF8;
+    background: linear-gradient(135deg, #FFF8F3 0%, #FAF9F7 100%);
+    min-height: 100vh;
+    color: #2C3E50;
 }
 
 header {
@@ -17,53 +16,212 @@ header {
     align-items: center;
     gap: 11px;
     height: 80px;
-    background-color: white;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(135deg, #2D5F6F 0%, #3A7D8F 100%);
+    box-shadow: 0px 4px 20px rgba(45, 95, 111, 0.1);
+    border-bottom: 3px solid rgba(45, 95, 111, 0.15);
+}
 
-    img {
+header > img {
     width: 50px;
-  }
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
 
-  h1 {
-    font-weight: 400;
-  }
-
+header > h1 {
+    font-weight: 600;
+    color: #FFF8F3;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 1px;
 }
 
 main {
-    padding: 30px 30px 10px;
+    padding: 40px 30px 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .add-ingredient-form {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    height: 38px;
+    gap: 15px;
+    height: 45px;
+    margin-bottom: 30px;
+}
 
-    input {
-    border-radius: 6px;
-    border: 1px solid #D1D5DB;
-    padding: 9px 13px;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+.add-ingredient-form > input {
+    border-radius: 25px;
+    border: 2px solid #E8E3DD;
+    padding: 12px 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
     flex-grow: 1;
-    min-width: 150px;
+    min-width: 200px;
     max-width: 400px;
-  }
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
 
-  button {
-      font-family: Inter, sans-serif;
-      border-radius: 6px;
-      border: none;
-      background-color: #141413;
-      color: #FAFAF8;
-      width: 150px;
-      font-size: 0.875rem;
-      font-weight: 500;
-  }
+.add-ingredient-form > input:focus {
+    outline: none;
+    border-color: #E67E22;
+    box-shadow: 0px 4px 20px rgba(230, 126, 34, 0.2);
+    background: white;
+}
 
-  button::before {
-      content: "+";
-      margin-right: 5px;
-  }
+.add-ingredient-form > button {
+    font-family: Inter, sans-serif;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #E67E22 0%, #FF6B6B 100%);
+    color: white;
+    width: 160px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0px 4px 15px rgba(230, 126, 34, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
+.add-ingredient-form > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 20px rgba(230, 126, 34, 0.4);
+}
+
+.add-ingredient-form > button::before {
+    content: "+";
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+ul.ingredients-list {
+    margin-bottom: 48px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+ul.ingredients-list > li {
+    color: #34495E;
+    line-height: 32px;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(230, 126, 34, 0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul.ingredients-list > li span {
+    flex-grow: 1;
+}
+
+ul.ingredients-list > li .remove-btn {
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+ul.ingredients-list > li .remove-btn:hover {
+    background: #E74C3C;
+    transform: scale(1.1);
+}
+
+ul.ingredients-list > li:last-child {
+    border-bottom: none;
+}
+
+ul.ingredients-list > li:hover {
+    color: #2D5F6F;
+}
+
+.get-recipe-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #FFF8F3 0%, #FAF9F7 100%);
+    padding: 25px 35px;
+    box-shadow: 0px 8px 30px rgba(45, 95, 111, 0.1);
+    border: 2px solid rgba(230, 126, 34, 0.2);
+    margin-top: 20px;
+}
+
+.get-recipe-container h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 28px;
+    color: #2D5F6F;
+}
+
+.get-recipe-container p {
+    color: #7F8C8D;
+    font-size: 1rem;
+    line-height: 24px;
+    margin: 5px 0 0 0;
+}
+
+.get-recipe-container button {
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #2D5F6F 0%, #3A7D8F 100%);
+    color: white;
+    padding: 12px 25px;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(45, 95, 111, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.get-recipe-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 20px rgba(45, 95, 111, 0.4);
+}
+
+.suggested-recipe-container {
+    color: #34495E;
+    line-height: 32px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0px 8px 30px rgba(45, 95, 111, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(230, 126, 34, 0.1);
+}
+
+.suggested-recipe-container ul li, .suggested-recipe-container ol li {
+    margin-bottom: 12px;
+    padding-left: 10px;
+}
+
+.suggested-recipe-container h1, .suggested-recipe-container h2, .suggested-recipe-container h3 {
+    color: #2D5F6F;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.suggested-recipe-container strong {
+    color: #E67E22;
+    font-weight: 600;
 }
